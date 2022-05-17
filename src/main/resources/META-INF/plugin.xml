@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>com.ssk.plugin.background</id>
+    <name>Background+++</name>
+    <vendor email="1976648487@qq.com" url="http://www.baidu.com">background</vendor>
+<!--    <description><![CDATA[-->
+<!--    Enter short description for your plugin here.<br>-->
+<!--    <em>most HTML tags may be used</em>-->
+<!--    ]]></description>-->
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+    <!-- Minimum and maximum build version of IDE compatible with the plugin. -->
+    <idea-version since-build="221.5591" until-build="221.*"/>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationConfigurable id="com.ssk.plugin.background.setting"
+                                 instance="com.ssk.backgroud.ui.BackgroundSelect"
+                                 displayName="Background"
+                                 groupWeight="20"
+                                 parentId="preferences.lookFeel"></applicationConfigurable>
+    <applicationService serviceInterface="com.ssk.backgroud.service.BackgroundService"
+                        serviceImplementation="com.ssk.backgroud.service.BackgroundServiceImpl">
+
+    </applicationService>
+
+    </extensions>
+    <applicationListeners>
+        <listener class="com.ssk.backgroud.listener.ApplicationListener"
+                  topic="com.intellij.ide.AppLifecycleListener">
+        </listener>
+    </applicationListeners>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="backgroud-setting" class="com.ssk.backgroud.action.BackgroudSettingAction"
+                text="backgroudSetting" description="backgroudSetting">
+            <add-to-group group-id="ViewMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

@@ -1,0 +1,35 @@
+plugins {
+    id 'org.jetbrains.intellij' version '1.5.3'
+    id 'java'
+}
+
+group 'com.ssk.plugin'
+version '1.1-SNAPSHOT'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
+}
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = '2022.1.1'
+
+}
+patchPluginXml {
+    changeNotes = """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
