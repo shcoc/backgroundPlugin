@@ -2,10 +2,12 @@
     <id>com.ssk.plugin.background</id>
     <name>Background+++</name>
     <vendor email="1976648487@qq.com" url="http://www.baidu.com">background</vendor>
-<!--    <description><![CDATA[-->
-<!--    Enter short description for your plugin here.<br>-->
-<!--    <em>most HTML tags may be used</em>-->
-<!--    ]]></description>-->
+    <description><![CDATA[
+    自己使用,未完成全部，本地背景图片切换已完成
+
+    设置位置 1. File/setting/Apperance/Apperance/background
+            2. View/backgroundSetting
+    ]]></description>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
@@ -37,4 +39,8 @@
             <add-to-group group-id="ViewMenu" anchor="last"/>
         </action>
     </actions>
+
+        <!-- Add your description here -->
+
+
 </idea-plugin>

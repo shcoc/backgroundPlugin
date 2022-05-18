@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SquiteDb implements DB {
     @Override
@@ -58,6 +59,7 @@ public class SquiteDb implements DB {
     }
     public void close() {
         try {
+            status.compareAndSet(true,false);
             connectionLocal.get().close();
             connectionLocal.remove();
         } catch (SQLException e) {
@@ -100,6 +102,8 @@ public class SquiteDb implements DB {
         }
     }
     private Random random = new Random();
+
+    private AtomicBoolean status = new AtomicBoolean(false);
 
     protected  void initDb() throws ClassNotFoundException {
         log.info("init 加载驱动:" + driverName);
@@ -154,6 +158,7 @@ public class SquiteDb implements DB {
         return list;
     }
     public  Connection getConnection() {
+        if (!this.status.get()) return  null;
         return connectionLocal.get();
     }
 
@@ -224,6 +229,15 @@ public class SquiteDb implements DB {
         return path;
     }
 
+    @Override
+    public void connect() {
+        status.compareAndSet(false,true);
+    }
+
+    @Override
+    public boolean isClosed() {
+        return status.get();
+    }
 }
 
 

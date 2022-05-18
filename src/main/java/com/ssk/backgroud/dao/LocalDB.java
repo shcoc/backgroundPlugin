@@ -66,8 +66,7 @@ public class LocalDB implements DB{
     @Override
     public void reset(){
         list.clear();
-        File file = new File(props.getValue(BackgroundConfig.FILE_PATH));
-        getImage(file);
+        connect();
     }
     public List<String> getAllImages(){
         return list;
@@ -92,5 +91,14 @@ public class LocalDB implements DB{
         }
     }
 
+    @Override
+    public void connect() {
+        File file = new File(props.getValue(BackgroundConfig.FILE_PATH));
+        getImage(file);
+    }
 
+    @Override
+    public boolean isClosed() {
+        return list.isEmpty();
+    }
 }

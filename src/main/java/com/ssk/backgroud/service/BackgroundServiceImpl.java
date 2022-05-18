@@ -108,7 +108,8 @@ public class BackgroundServiceImpl implements BackgroundService{
         }
         public String build(){
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(this.url);
+            stringBuilder.append((this.url==null || this.url.length()==0)?this.getClass()
+                    .getClassLoader().getResource("background.jpg").getPath():this.url);
             stringBuilder.append(",");
             stringBuilder.append(opacity==null?"20":opacity);
             stringBuilder.append(",");

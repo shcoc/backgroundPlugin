@@ -218,10 +218,10 @@ public class BackgroundSelect extends JPanel implements Configurable {
         opacity.setValue(Integer.valueOf(opcity == null?"100":opcity));
         
         //TODO 数据库部分
-  //      network.setEnabled(false);
-//       cache.setEnabled(false);
-//       clearCache.setEnabled(false);
-//       bulideCache.setEnabled(false);
+        network.setEnabled(false);
+       cache.setEnabled(false);
+       clearCache.setEnabled(false);
+       bulideCache.setEnabled(false);
         
     }
 

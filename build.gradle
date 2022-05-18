@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.ssk.plugin'
-version '1.1-SNAPSHOT'
+version '0.0.1'
 
 
 repositories {
@@ -23,8 +23,8 @@ intellij {
 }
 patchPluginXml {
     changeNotes = """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+    
+      <em>自己使用</em>"""
 }
 test {
     useJUnitPlatform()
@@ -33,3 +33,6 @@ test {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+//publishPlugin{
+//    token = 'perm:c3NrMjQ1MzI4OTQ5OA==.OTItNjA5NQ==.4brK39LRd797vMZN46SdhKYOc0IQb2'
+//}
